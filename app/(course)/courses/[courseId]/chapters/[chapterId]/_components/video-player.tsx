@@ -3,7 +3,7 @@
 import axios from "axios"
 import MuxPlayer from "@mux/mux-player-react"
 import { useState } from "react"
-import { Toast } from "react-hot-toast"
+import toast, { Toast } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import { Loader2, Lock } from "lucide-react"
 
@@ -30,13 +30,38 @@ export const VideoPlayer = ({
   title
 }: VideoPlayerProps) => {
   const [isReady, setIsReady] = useState(false)
+  const router = useRouter()
+  const confetti = useConfettiStore()
+
+  const onEnd = async () => {
+    try {
+      if (completeOnEnd) {
+        await axios.put(`/api/courses/${courseId}/chapters/${chapterId}/progress`, {
+          isCompleted: true,
+        })
+
+        if (!nextChapterId) {
+          confetti.onOpen()
+        }
+
+        toast.success("Progress updated");
+        router.refresh();
+
+        if (nextChapterId) {
+          router.push(`/courses/${courseId}/chapters/${nextChapterId}`)
+        }
+      }
+    } catch {
+      toast.error("Something went wrong")
+    }
+  }
 
   return (
     <div className="relative aspect-video">
       {
         !isReady && !isLocked && (
           <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
-            <Loader2 className="h-8 w-8 animate-spin text-secondary"/>
+            <Loader2 className="h-8 w-8 animate-spin text-secondary" />
           </div>
         )
       }
@@ -60,7 +85,7 @@ export const VideoPlayer = ({
               )
             }
             onCanPlay={() => setIsReady(true)}
-            onEnded={() => {}}
+            onEnded={onEnd}
             autoPlay
             playbackId={playbackId}
           />
