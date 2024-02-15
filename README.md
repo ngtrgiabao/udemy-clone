@@ -4,10 +4,9 @@
 
 > Simple LMS Web Application using Next, React, Stripe, Mux, Prisma, MySQL and more...
 
-**Website: <https://udemy-clone-yanji.vercel.app/>**
+**Website: updating...**
 
-## 🤔 Why ?
-
+## 🤔 Why
 upadting...
 
 ## 🛠️ Config
