@@ -14,8 +14,6 @@ services:
       MYSQL_PASSWORD: 123456
     expose:
       - 1234
-    volumes:
-      - mysql-data:/var/lib/mysql
     mem_limit: 2g
     memswap_limit: 3g
   stripe_cli:

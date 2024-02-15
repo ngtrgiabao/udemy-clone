@@ -35,7 +35,7 @@ export const CoursesList = ({
       {
         items.length === 0 && (
           <div className="text-center text-sm text-muted-foreground mt-10">
-            No coures found
+            No courses found
           </div>
         )
       }
