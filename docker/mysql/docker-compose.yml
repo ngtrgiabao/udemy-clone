@@ -1,8 +1,9 @@
 version: "3.8"
+name: udemy_clone
 services:
-  mysql:
+  mysql_db:
     image: mysql:latest
-    container_name: udemy_clone
+    container_name: mysql_db
     restart: always
     ports:
       - "3306:3306"
@@ -15,6 +16,15 @@ services:
       - 1234
     volumes:
       - mysql-data:/var/lib/mysql
+    mem_limit: 2g
+    memswap_limit: 3g
+  stripe_cli:
+    image: stripe/stripe-cli:latest
+    container_name: stripe_cli
+    restart: always
+    env_file:
+      - ../../.env    
+    command: listen --forward-to localhost:3000/api/webhook
     mem_limit: 2g
     memswap_limit: 3g
 volumes:
