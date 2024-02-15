@@ -24,7 +24,7 @@ services:
     restart: always
     env_file:
       - ../../.env    
-    command: listen --forward-to localhost:3000/api/webhook
+    command: listen --forward-to http://host.docker.internal:3000/api/webhook --skip-verify
     mem_limit: 2g
     memswap_limit: 3g
 volumes:
