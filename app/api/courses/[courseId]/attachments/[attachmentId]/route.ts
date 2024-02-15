@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 
 export async function DELETE(
   req: Request,
-  { params } : {
+  { params }: {
     params: {
       courseId: string,
       attachmentId: string
@@ -15,7 +15,7 @@ export async function DELETE(
   try {
     const { userId } = auth();
 
-    if(!userId) {
+    if (!userId) {
       return new NextResponse("Unauthorized", {
         status: 401
       })
@@ -28,7 +28,7 @@ export async function DELETE(
       }
     })
 
-    if(!courseOwner) {
+    if (!courseOwner) {
       return new NextResponse("Unauthorized", {
         status: 401
       })
