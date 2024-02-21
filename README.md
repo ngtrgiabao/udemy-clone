@@ -7,7 +7,7 @@
 **Website: updating...**
 
 ## 🤔 Why
-upadting...
+updating...
 
 ## 🛠️ Config
 
@@ -49,7 +49,7 @@ upadting...
 
 ## 🐣 How to run
 
-upadting...
+updating...
 
 ## ⚖️ License
 
