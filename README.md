@@ -75,7 +75,7 @@ Constructed utilizing NextAuth, Clerk, Mux, Uploadthing, and database hosted on 
 **Step 5**: 
 - Open terminal type `docker-compose up` (you need ensure you are at `docker\mysql` to run it, by using `cd`)
 
-### Well done, enjoye my project ❤️‍🔥** 
+### Well done, enjoy my project ❤️‍🔥
 
 ## ⚖️ License
 
